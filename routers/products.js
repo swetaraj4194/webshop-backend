@@ -6,7 +6,10 @@ const router = new Router();
 // test http get :4000/products/
 router.get("/", async (request, response, next) => {
   try {
-    const product = await Products.findAll();
+    const product = await Products.findAll({
+      include: [Categories],
+    });
+
     response.send(product);
   } catch (e) {
     console.log(e.message);
