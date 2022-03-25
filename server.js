@@ -5,6 +5,7 @@ const cors = require("cors");
 const app = express();
 const PORT = 4000;
 const productRouter = require("./routers/products");
+const productUser=require("./routers/users")
 
 app.use(cors());
 
@@ -17,5 +18,6 @@ app.use(express.json());
 //     next(e);
 //   }
 // });
+app.use("/users" ,productUser)
 app.use("/products", productRouter);
 app.listen(PORT, () => console.log(`Listining on port: ${PORT}`));
